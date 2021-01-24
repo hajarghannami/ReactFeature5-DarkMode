@@ -24,19 +24,21 @@ const theme = {
 };
 
 function App() {
-  const [currentTheme, setCurrentTheme] = useState(theme.light);
+  const [currentTheme, setCurrentTheme] = useState("light");
 
   const toggleCurrentTheme = () => {
-    if (currentTheme === theme.light) {
-      setCurrentTheme(theme.dark);
+    if (currentTheme === "light") {
+      setCurrentTheme("dark");
     } else {
-      setCurrentTheme(theme.light);
+      setCurrentTheme("light");
     }
   };
   return (
-    <ThemeProvider theme={currentTheme}>
+    <ThemeProvider theme={theme[currentTheme]}>
       <GlobalStyle />
-      <ThemeButton onClick={toggleCurrentTheme}>Dark Theme</ThemeButton>
+      <ThemeButton onClick={toggleCurrentTheme}>
+        {currentTheme.toUpperCase()}
+      </ThemeButton>
       <Home />
       <CookieList />
     </ThemeProvider>
